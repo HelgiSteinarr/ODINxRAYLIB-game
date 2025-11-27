@@ -10,7 +10,8 @@ main :: proc() {
 
 	raylib.SetConfigFlags(raylib.ConfigFlags{
 		raylib.ConfigFlag.WINDOW_ALWAYS_RUN,
-		raylib.ConfigFlag.WINDOW_RESIZABLE
+		raylib.ConfigFlag.WINDOW_RESIZABLE,
+        raylib.ConfigFlag.BORDERLESS_WINDOWED_MODE
 	})
     raylib.InitWindow(i32(screen_width), i32(screen_height), "ODIN x RAYLIB")
     defer raylib.CloseWindow()
@@ -27,7 +28,7 @@ main :: proc() {
         raylib.BeginDrawing()
         draw_game(&state)
         raylib.EndDrawing()
-        
+       
     }
 }
 

@@ -25,6 +25,9 @@ update_game :: proc(state: ^Game_State, dt: f32) {
     if raylib.IsKeyDown(raylib.KeyboardKey.UP)    do state.player_pos[1] -= state.player_speed * dt 
     if raylib.IsKeyDown(raylib.KeyboardKey.DOWN)  do state.player_pos[1] += state.player_speed * dt
 
+	if raylib.IsMouseButtonDown(raylib.MouseButton.LEFT)  do state.font_size += 1
+	if raylib.IsMouseButtonDown(raylib.MouseButton.RIGHT) do state.font_size -= 1
+
 	// DVD text update	
 	state.text_pos[0] += state.text_vel[0] * dt
 	state.text_pos[1] += state.text_vel[1] * dt
@@ -36,7 +39,7 @@ update_game :: proc(state: ^Game_State, dt: f32) {
 }
 
 draw_game :: proc(state: ^Game_State) {
-    raylib.ClearBackground(raylib.RAYWHITE)
+    raylib.ClearBackground({160, 160, 160, 255})
 
 	// draw player
     raylib.DrawCircleV(state.player_pos, 20.0, raylib.BLUE)
